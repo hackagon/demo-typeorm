@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  demodb:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo123
+      POSTGRES_DB: demo
+    ports:
+      - '15432:5432'
+    volumes:
+      - ./database:/var/lib/postgresql/data
+
+volumes:
+  database:
