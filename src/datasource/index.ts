@@ -21,7 +21,7 @@ export const typeormConfig: DataSourceOptions & TypeOrmModuleOptions = {
   migrationsRun: false,
   logging: false,
   migrationsTransactionMode: 'each',
-  synchronize: true,
+  synchronize: false,
 };
 
 const datasource = new DataSource(typeormConfig);
