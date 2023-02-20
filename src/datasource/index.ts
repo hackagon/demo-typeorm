@@ -10,7 +10,7 @@ dotenv.config({ path: path.join(__dirname, '../..', '.env') });
 const configService = new ConfigService();
 
 export const typeormConfig: DataSourceOptions & TypeOrmModuleOptions = {
-  entities: [__dirname + '/../entity/*{.ts,.js}'],
+  entities: [__dirname + '/../main/**/*{.ts,.js}'],
   migrations: [__dirname + '/../migrations/*{.ts,.js}'],
   type: 'postgres',
   host: configService.get('DB_HOST'),
