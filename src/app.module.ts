@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import Joi from 'joi';
 import path from 'path';
 import datasource, { typeormConfig } from './datasource';
+import { MainModule } from './main/main.module';
 
 @Module({
   imports: [
@@ -33,6 +34,8 @@ import datasource, { typeormConfig } from './datasource';
         return datasource;
       },
     }),
+
+    MainModule,
   ],
 
   controllers: [],
