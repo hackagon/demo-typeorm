@@ -4,8 +4,8 @@ services:
   demodb:
     image: postgres:13
     environment:
-      POSTGRES_USER: demo
-      POSTGRES_PASSWORD: demo123
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: demo
     ports:
       - '15432:5432'
