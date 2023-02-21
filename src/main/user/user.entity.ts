@@ -1,4 +1,6 @@
+import datasource from 'src/datasource';
 import {
+  AfterLoad,
   BaseEntity,
   Column,
   CreateDateColumn,
@@ -6,6 +8,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { LoginEntity } from '../login/login.entity';
+import _ from 'lodash';
 
 @Entity({ name: 'user' })
 export class UserEntity extends BaseEntity {
@@ -29,4 +33,12 @@ export class UserEntity extends BaseEntity {
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
+
+  @AfterLoad()
+  async embedLoginCount() {
+    const loginCount = await datasource
+      .getRepository(LoginEntity)
+      .countBy({ userId: this.id });
+    _.set(this, 'loginCount', loginCount);
+  }
 }

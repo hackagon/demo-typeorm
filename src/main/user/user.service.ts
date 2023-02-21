@@ -12,4 +12,8 @@ export class UserService {
   async create(data: UserEntity) {
     return this._repository.create(data).save();
   }
+
+  async findById(id: number) {
+    return this._repository.findOneBy({ id });
+  }
 }
